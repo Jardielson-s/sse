@@ -8,7 +8,7 @@ export const Coin = () => {
         const eventSource = new EventSource('http://localhost:3001/coin')
         eventSource.onmessage = (event) => {
             const coinData = JSON.parse(event.data)
-            setIcon(coinData.coin > coin ? <FaLongArrowAltUp />: <FaLongArrowAltDown/>)
+            setIcon(coinData.coin > coin ? <FaLongArrowAltUp color="green"/>: <FaLongArrowAltDown color="red"/>)
             setCoin(coinData.coin)
         }
         return () => eventSource.close();
